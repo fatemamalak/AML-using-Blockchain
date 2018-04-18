@@ -14,7 +14,8 @@
 
 /**
  * Sample transaction processor function.
- * @param {org.acme.model.createKyc} tx The sample transaction instance.
+ * @param {org.acme.model.createKyc}tx The sample transaction instance.
+ *
  * @transaction
  */
 function createBlock(tx) {
@@ -37,6 +38,19 @@ function createBlock(tx) {
 
         });
 
+}
+/**
+ @param {org.acme.model.add_suspicious_transaction}transfer The sample transaction instance.
+ @transaction
+*/
+function addSuspiciousTransaction(transfer) {
+    return getAssetRegistry('org.acme.model.TransactionDetails')
+    .then(function (assetRegistry) {
+
+        // Update the asset in the asset registry.
+        return assetRegistry.update(transfer.tranx);
+
+    });
 
 }
 function getUID(id){

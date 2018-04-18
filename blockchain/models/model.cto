@@ -1,20 +1,35 @@
-
 namespace org.acme.model
 enum Gender{
   o Male
   o Female
   o Other
 }
-
 asset KYCAsset identified by uid {
   o String uid
   o Customer customer
   -->Bank[] bank
 }
+asset suspiciousAccountAsset identified by Kycid{
+  o String Kycid
+  o suspiciousAccountDetails[] details
+}
+concept suspiciousTransaction{
+  -->Bank otherCustBank
+  o String other_acc_id
+  o Double amount  
+  o String modeOfPayment
+  o String Date
+}
+concept suspiciousAccountDetails{
+  o String accountId
+  --> Bank custBank
+  o suspiciousTransaction[] transArr
+  o Double suspiciousScore
+  
+}
  concept Address{
   o String address
   o String zipcode
-  
 }
  concept Customer {
   o String firstName
@@ -24,12 +39,8 @@ asset KYCAsset identified by uid {
   o String dob
   o String phoneNo
   o String pan
-}
-concept Account{
-  o String accountId
-  o Integer balance
-  o Customer customer
-}
+  o String Occupation
+  }
 participant Bank identified by bankId {
   o String bankId
   o String bankName
@@ -38,4 +49,14 @@ transaction createKyc{
   -->KYCAsset asset
   o Bank bank
 }
+transaction add_suspicious_transaction{
+  -->suspiciousAccountAsset tranx
+}
+concept Backup{
+  o String from
+  o String to
+  o String paymentmode
+  o Double amount
+}
+
 
