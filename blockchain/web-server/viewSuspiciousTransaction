@@ -14,7 +14,7 @@
 		
                 var kycID = $('#kycID').val();
 
-                $.get("http://localhost:3000/api/org.acme.model.suspiciousAccountAsset/" +  kycID,
+                $.get("http://13.232.42.68:3000/api/org.acme.model.suspiciousAccountAsset/" +  kycID,
                     function (data, status) {
 
 

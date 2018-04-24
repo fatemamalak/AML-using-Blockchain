@@ -37,7 +37,7 @@
 
 
                 console.log( JSON.stringify( kyc));
-                $.post("http://localhost:3000/api/org.acme.model.KYCAsset",
+                $.post("http://13.232.42.68:3000/api/org.acme.model.KYCAsset",
                     kyc,
                     function (data, status) {
                         console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
@@ -98,13 +98,16 @@
 </tr>
 </tbody>
 </table>
-<button id="submitData">Submit</button>
+<!--<button id="submitData" style="text-align:center;">Submit</button> -->
+<div class="wrapper">
+    <button class="button" id=submitData>Submit</button>
+</div>
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 body {
-  background-color: #3e94ec;
+  
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -245,7 +248,15 @@ td.text-right {
   text-align: right;
 }
 h1{
-  align:center
+  text-align:center;
   margin-left:50px;
+}
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    
 }
 </style>
